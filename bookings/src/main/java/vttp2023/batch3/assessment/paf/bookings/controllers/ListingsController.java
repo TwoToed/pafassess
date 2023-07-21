@@ -85,7 +85,12 @@ public class ListingsController {
     }
 
     //TODO: Task 5
-
+    @PostMapping("/book")
+    public ModelAndView book(@RequestBody MultiValueMap <String, String> form){
+        ModelAndView mav = new ModelAndView();
+        mav.setViewName("notfinished");
+        return mav;
+    }
 
 }
 

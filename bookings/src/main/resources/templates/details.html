@@ -52,7 +52,7 @@
             </tr>
         </tbody> 
     </table>
-    <form method="POST"  action="/search">
+    <form method="POST"  action="/book">
         <table>
             <tr>
                 <td>Name:</td>
@@ -83,6 +83,12 @@
                 <td>
                     <button type="submit">Book</button>
                 </td>
+            </tr>
+            <tr>
+                <td>
+                    <input hidden type="text" data-th-value="${id}">
+                </td>
+                    
             </tr>
         </table>
     </form>

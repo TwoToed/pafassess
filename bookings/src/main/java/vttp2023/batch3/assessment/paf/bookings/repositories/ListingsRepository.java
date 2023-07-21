@@ -3,12 +3,14 @@ package vttp2023.batch3.assessment.paf.bookings.repositories;
 import java.util.List;
 
 import org.bson.Document;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.domain.Sort.Direction;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import vttp2023.batch3.assessment.paf.bookings.models.Constants;
@@ -17,6 +19,9 @@ import vttp2023.batch3.assessment.paf.bookings.models.Constants;
 public class ListingsRepository {
 	@Autowired
 	private MongoTemplate template;
+
+	@Autowired
+    JdbcTemplate jdbcTemplate;
 
 	//TODO: Task 2
 
@@ -66,6 +71,22 @@ public class ListingsRepository {
 	}
 
 	//TODO: Task 5
-
+	//didnt finish in time
+	private String findvancancies = "select vacancy from acc_occupancy where acc_id = ?";
+	private String updatevacancies = "update acc_occupancy set vacancy = ?";
+	private String insertbooking = "insert into reservations (resv_id, name, email, acc_id, date, duration) values (?, ?, ?, ?, ?, ?)";
+	public Integer book(String acc_id, Integer days, String name, String email, String date, String duration){
+		Integer vacancies = jdbcTemplate.queryForObject(findvancancies, BeanPropertyRowMapper.newInstance(Integer.class));
+		
+		if (days > vacancies){
+			return 0;
+		}
+		//imagine this is randomly generated
+		String resv_id = "1324fsd32";
+		Integer vacanciesleft = vacancies - days;
+		jdbcTemplate.update(updatevacancies, vacanciesleft);
+		jdbcTemplate.update(insertbooking, resv_id, name, email, acc_id, date, duration);
+		return 1;
+	}
 
 }
