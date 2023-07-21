@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>hi</h1>
+    <h2 data-th-text="${nothing}"></h2>
+    <h1>bye</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Image</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr data-th-each="s: ${accom}" data-th-object="${s}">
+                <td> 
+                    <span data-th-text="*{name}"></span>
+                </td>
+                <td> 
+                    <span data-th-text="*{price}"></span>
+                </td>
+                <td> 
+                    <img data-th-src="*{image}" width="150" height ="100">
+
+                </td>
+                <td> 
+                    <a data-th-href="@{/search/{ty}(ty=*{_id})}">
+                        <button type="button">Details</button>
+                    </a>
+                </td>
+            </tr>
+        </tbody> 
+    </table>
+
+</body>
+</html>

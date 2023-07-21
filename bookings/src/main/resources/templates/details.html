@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Id:</th>
+                <th data-th-text="${id}"></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody data-th-object="${details}"> 
+            <tr>
+                <td> 
+                    <span>Description</span>
+                </td>
+                <td> 
+                    <span data-th-text="*{description}"></span>
+                </td>
+                <td>
+                    <img data-th-src="*{image}" width="150" height ="100">
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <span>Address</span>
+                </td>
+                <td> 
+                    <span data-th-text="*{address}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <span>Price</span>
+                </td>
+                <td> 
+                    <span data-th-text="*{price}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td> 
+                    <span>Amenities</span>
+                </td>
+                <td> 
+                    <span data-th-text="*{amenities}"></span>
+                </td>
+            </tr>
+        </tbody> 
+    </table>
+    <form method="POST"  action="/search">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>
+                    <input type="text" name="email">
+                </td>
+            </tr>
+            <tr>
+                <td>Arrival:</td>
+                <td>
+                    <input type="date" name="arrival">
+                </td>
+            </tr>
+            <tr>
+                <td>Stay:</td>
+                <td>
+                    <input type="text" name="stay"><span>days</span>
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="submit">Book</button>
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

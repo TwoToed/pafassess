@@ -1,0 +1,1 @@
+mongoimport -h localhost:27017 -d bookings -c listings --jsonArray --type=json listings.json
